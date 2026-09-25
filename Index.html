@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Undangan HUT ke-61 SMKN 2 Ambon</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    #fffdf7 0%,
+                    #f8f3e8 45%,
+                    #eee5d2 100%
+                );
+
+            color: #4b3a20;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        /* =========================================================
+           SCROLL PROGRESS
+        ========================================================= */
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #a97824,
+                    #f6df91,
+                    #c79b45,
+                    #fff1b0
+                );
+
+            box-shadow:
+                0 0 8px rgba(198,157,69,.7),
+                0 0 18px rgba(198,157,69,.4);
+
+            z-index: 10001;
+        }
+
+
+        /* =========================================================
+           VIDEO PEMBUKA
+        ========================================================= */
+
+        #videoOverlay {
+            position: fixed;
+            inset: 0;
+
+            background: #090806;
+
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
+
+        #videoOverlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #openingVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-dark {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.15),
+                    rgba(0,0,0,.5)
+                );
+
+            pointer-events: none;
+        }
+
+        .open-button {
+            position: absolute;
+            bottom: 9%;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            padding: 14px 30px;
+
+            border: 1px solid rgba(238,205,123,.8);
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.08);
+
+            color: #fff5d0;
+
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(8px);
+
+            transition: .4s ease;
+
+            box-shadow:
+                0 0 20px rgba(222,180,85,.2);
+        }
+
+        .open-button:hover {
+            background: rgba(213,171,77,.18);
+
+            box-shadow:
+                0 0 30px rgba(222,180,85,.45);
+
+            transform:
+                translateX(-50%)
+                translateY(-3px);
+        }
+
+        .open-button::before {
+            content: "";
+
+            position: absolute;
+            inset: -5px;
+
+            border: 1px solid rgba(236,204,125,.25);
+
+            border-radius: 50px;
+
+            animation:
+                buttonPulse 2.5s infinite;
+        }
+
+        @keyframes buttonPulse {
+
+            0%,100% {
+                transform: scale(1);
+                opacity: .3;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================================
+           GOLD LIGHT SWEEP
+        ========================================================= */
+
+        .gold-light-sweep {
+            position: fixed;
+            inset: 0;
+
+            z-index: 9998;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            transform:
+                translateX(-120%);
+
+            background:
+                linear-gradient(
+                    100deg,
+                    transparent 20%,
+                    rgba(255,238,166,.03) 35%,
+                    rgba(255,236,157,.2) 50%,
+                    rgba(255,255,220,.08) 57%,
+                    transparent 75%
+                );
+        }
+
+        .gold-light-sweep.active {
+            animation:
+                goldSweep 1.8s ease forwards;
+        }
+
+        @keyframes goldSweep {
+
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: .8;
+            }
+
+            100% {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================================
+           ORNAMEN GOLD
+        ========================================================= */
+
+        .gold-ornament {
+            position: absolute;
+
+            width: 85px;
+            height: 85px;
+
+            border:
+                1px solid rgba(190,145,58,.42);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            opacity: .75;
+
+            transform:
+                translateY(var(--parallax-y, 0px))
+                rotate(45deg);
+
+            transition:
+                transform .15s linear;
+        }
+
+        .gold-ornament::before,
+        .gold-ornament::after {
+            content: "";
+
+            position: absolute;
+            inset: 12px;
+
+            border:
+                1px solid rgba(190,145,58,.3);
+
+            border-radius: 50%;
+        }
+
+        .gold-ornament::after {
+            inset: 28px;
+
+            border-color:
+                rgba(190,145,58,.5);
+        }
+
+        .ornament-top-left {
+            top: 30px;
+            left: -35px;
+        }
+
+        .ornament-top-right {
+            top: 30px;
+            right: -35px;
+        }
+
+        .ornament-bottom-left {
+            bottom: 30px;
+            left: -35px;
+        }
+
+        .ornament-bottom-right {
+            bottom: 30px;
+            right: -35px;
+        }
+
+
+        /* =========================================================
+           GOLD PARTICLES
+        ========================================================= */
+
+        .gold-particles {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .gold-particles span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            background: #d7ad57;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 8px rgba(218,177,86,.8);
+
+            opacity: .5;
+
+            animation:
+                particleFloat linear infinite;
+        }
+
+        .gold-particles span:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-duration: 8s;
+        }
+
+        .gold-particles span:nth-child(2) {
+            left: 25%;
+            top: 70%;
+            animation-duration: 11s;
+        }
+
+        .gold-particles span:nth-child(3) {
+            left: 42%;
+            top: 35%;
+            animation-duration: 9s;
+        }
+
+        .gold-particles span:nth-child(4) {
+            left: 65%;
+            top: 65%;
+            animation-duration: 12s;
+        }
+
+        .gold-particles span:nth-child(5) {
+            left: 80%;
+            top: 25%;
+            animation-duration: 10s;
+        }
+
+        .gold-particles span:nth-child(6) {
+            left: 90%;
+            top: 75%;
+            animation-duration: 13s;
+        }
+
+        @keyframes particleFloat {
+
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            25% {
+                opacity: .6;
+            }
+
+            75% {
+                opacity: .4;
+            }
+
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================================
+           FOTO PEMBUKA
+        ========================================================= */
+
+        .intro-photo-section {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 80px 20px;
+
+            background: #f7f1e5;
+        }
+
+        .intro-photo-wrapper {
+            position: relative;
+
+            width: min(900px,92%);
+
+            padding: 10px;
+        }
+
+        .intro-photo-wrapper::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -8px;
+
+            border:
+                1px solid rgba(186,142,54,.45);
+
+            pointer-events: none;
+        }
+
+        .intro-photo-wrapper img {
+            width: 100%;
+
+            border-radius: 2px;
+
+            box-shadow:
+                0 20px 60px rgba(74,52,20,.18);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            padding:
+                100px 20px 90px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,255,255,.95),
+                    rgba(247,239,221,.9)
+                );
+        }
+
+        .hero-content {
+            width: min(900px,100%);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image-frame {
+            position: relative;
+
+            width: min(400px,100%);
+
+            margin:
+                0 auto 40px;
+
+            padding: 8px;
+        }
+
+        .hero-image-frame::before,
+        .hero-image-frame::after {
+            content: "";
+
+            position: absolute;
+
+            width: 45px;
+            height: 45px;
+
+            border-color: #c59a49;
+            border-style: solid;
+        }
+
+        .hero-image-frame::before {
+            top: 0;
+            left: 0;
+
+            border-width:
+                1px 0 0 1px;
+        }
+
+        .hero-image-frame::after {
+            right: 0;
+            bottom: 0;
+
+            border-width:
+                0 1px 1px 0;
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+
+            box-shadow:
+                0 15px 45px rgba(78,55,23,.13);
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            color: #a67a28;
+
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+
+            font-size:
+                clamp(28px,5vw,48px);
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            color: #5a431f;
+        }
+
+        .hero-subtitle {
+            margin-top: 14px;
+
+            font-size: 14px;
+
+            letter-spacing: 3px;
+
+            color: #907548;
+        }
+
+
+        /* =========================================================
+           ANNIVERSARY 61
+        ========================================================= */
+
+        .anniversary-wrap {
+            position: relative;
+
+            width: 250px;
+            height: 250px;
+
+            margin:
+                55px auto 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anniversary-wrap::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 20px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(219,179,93,.18),
+                    rgba(219,179,93,.04) 55%,
+                    transparent 72%
+                );
+
+            animation:
+                haloPulse 4s ease-in-out infinite;
+        }
+
+        .anniversary-wrap::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 8px;
+
+            border:
+                1px solid rgba(194,151,65,.38);
+
+            border-radius: 50%;
+
+            animation:
+                haloRotate 18s linear infinite;
+        }
+
+        @keyframes haloPulse {
+
+            0%,100% {
+                transform: scale(.94);
+                opacity: .7;
+            }
+
+            50% {
+                transform: scale(1.06);
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes haloRotate {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        .anniversary-number {
+            position: relative;
+
+            z-index: 2;
+
+            font-family: 'Cinzel', serif;
+
+            font-size:
+                clamp(100px,20vw,155px);
+
+            line-height: 1;
+
+            font-weight: 500;
+
+            color: #b1873d;
+
+            text-shadow:
+                0 5px 20px rgba(171,126,45,.2);
+
+            animation:
+                numberFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes numberFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
+
+        }
+
+        .anniversary-text {
+            font-family:
+                'Pinyon Script', cursive;
+
+            font-size: 28px;
+
+            color: #967037;
+
+            margin-top: -25px;
+        }
+
+
+        /* =========================================================
+           COUNTDOWN
+        ========================================================= */
+
+        .countdown-wrapper {
+            margin:
+                50px auto 10px;
+
+            width: min(600px,100%);
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color: #9a7537;
+
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 10px;
+        }
+
+        .countdown-box {
+            padding: 16px 8px;
+
+            border:
+                1px solid rgba(186,143,56,.3);
+
+            background:
+                rgba(255,255,255,.55);
+
+            box-shadow:
+                0 8px 25px rgba(102,76,31,.06);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .countdown-box::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 70%;
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #e4c77e,
+                    transparent
+                );
+
+            animation:
+                countdownShimmer 4s infinite;
+        }
+
+        .countdown-box:nth-child(2)::before {
+            animation-delay: .7s;
+        }
+
+        .countdown-box:nth-child(3)::before {
+            animation-delay: 1.4s;
+        }
+
+        .countdown-box:nth-child(4)::before {
+            animation-delay: 2.1s;
+        }
+
+        @keyframes countdownShimmer {
+
+            0% {
+                left: -100%;
+            }
+
+            45%,100% {
+                left: 150%;
+            }
+
+        }
+
+        .countdown-number {
+            display: block;
+
+            font-family: 'Cinzel', serif;
+
+            font-size: 25px;
+
+            color: #9b722b;
+        }
+
+        .countdown-label {
+            display: block;
+
+            margin-top: 5px;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+            color: #8d8069;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           GOLD SEPARATOR
+        ========================================================= */
+
+        .premium-separator {
+            width: 180px;
+            height: 1px;
+
+            margin: 35px auto;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #c49a4d,
+                    transparent
+                );
+        }
+
+        .premium-separator::before {
+            content: "✦";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%,-50%);
+
+            color: #c49a4d;
+
+            font-size: 14px;
+
+            background:
+                #fffaf0;
+
+            padding:
+                0 8px;
+        }
+
+
+        /* =========================================================
+           DETAIL SECTION
+        ========================================================= */
+
+        .details-section {
+            padding: 110px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5eddd,
+                    #fffdf8,
+                    #f2e8d3
+                );
+
+            text-align: center;
+        }
+
+        .details-card {
+            position: relative;
+
+            width: min(760px,100%);
+
+            margin: auto;
+
+            padding: 60px 35px;
+
+            background:
+                rgba(255,255,255,.8);
+
+            border:
+                1px solid rgba(184,140,52,.35);
+
+            box-shadow:
+                0 25px 70px rgba(76,56,27,.1);
+
+            backdrop-filter: blur(5px);
+        }
+
+        .details-card::before,
+        .details-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 65px;
+            height: 65px;
+
+            border-color:
+                rgba(188,143,54,.6);
+
+            border-style: solid;
+        }
+
+        .details-card::before {
+            top: 15px;
+            left: 15px;
+
+            border-width:
+                1px 0 0 1px;
+        }
+
+        .details-card::after {
+            right: 15px;
+            bottom: 15px;
+
+            border-width:
+                0 1px 1px 0;
+        }
+
+        .details-title {
+            font-family: 'Cinzel', serif;
+
+            font-size:
+                clamp(25px,5vw,38px);
+
+            letter-spacing: 3px;
+
+            color: #5b431e;
+        }
+
+        .details-subtitle {
+            margin-top: 10px;
+
+            color: #9b783d;
+
+            letter-spacing: 2px;
+
+            font-size: 12px;
+        }
+
+        .detail-list {
+            margin-top: 45px;
+
+            display: grid;
+
+            gap: 25px;
+        }
+
+        .detail-item {
+            padding: 18px 10px;
+
+            border-bottom:
+                1px solid rgba(177,137,62,.16);
+        }
+
+        .detail-icon {
+            font-size: 23px;
+
+            color: #b2873d;
+
+            margin-bottom: 8px;
+
+            animation:
+                iconFloat 4s ease-in-out infinite;
+        }
+
+        .detail-label {
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #a18c68;
+        }
+
+        .detail-value {
+            margin-top: 6px;
+
+            font-family: 'Cinzel', serif;
+
+            font-size: 17px;
+
+            color: #624a25;
+        }
+
+        @keyframes iconFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+
+        }
+
+
+        /* =========================================================
+           THEME
+        ========================================================= */
+
+        .theme-box {
+            margin:
+                45px auto 0;
+
+            padding:
+                28px 25px;
+
+            max-width: 600px;
+
+            border:
+                1px solid rgba(191,147,57,.3);
+
+            position: relative;
+
+            background:
+                rgba(255,250,238,.6);
+        }
+
+        .theme-box::before {
+            content: "✦";
+
+            position: absolute;
+
+            top: -11px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            background: #fffaf0;
+
+            padding: 0 10px;
+
+            color: #c1984b;
+
+            font-size: 15px;
+        }
+
+        .theme-label {
+            font-family: 'Cinzel', serif;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            color: #a37c39;
+
+            margin-bottom: 12px;
+        }
+
+        .theme-text {
+            font-family:
+                'Pinyon Script', cursive;
+
+            font-size: 30px;
+
+            color: #80622f;
+        }
+
+
+        /* =========================================================
+           FOTO FAMILY
+        ========================================================= */
+
+        .intro-photo-section {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 80px 20px;
+
+            background: #f7f1e5;
+
+            position: relative;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            padding: 100px 20px;
+
+            text-align: center;
+
+            background: #eee4d0;
+
+            position: relative;
+        }
+
+
+        /* =========================================================
+           LOGO FOOTER
+        ========================================================= */
+
+        .footer-logo-wrapper {
+            position: relative;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto 25px;
+
+            padding: 0;
+        }
+
+        .footer-logo {
+            width: 120px !important;
+
+            max-width: 120px !important;
+
+            height: auto !important;
+
+            display: block;
+
+            margin: 0 auto;
+
+            object-fit: contain;
+
+            border-radius: 0;
+
+            box-shadow:
+                0 10px 30px rgba(74,52,20,.12);
+        }
+
+        .footer-text {
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.9;
+
+            font-size: 13px;
+
+            color: #77694f;
+        }
+
+        .footer-signature {
+            margin-top: 35px;
+
+            font-family:
+                'Pinyon Script', cursive;
+
+            font-size: 36px;
+
+            color: #967239;
+
+            animation:
+                signatureFloat 5s ease-in-out infinite;
+        }
+
+        .footer-name {
+            margin-top: 8px;
+
+            font-family: 'Cinzel', serif;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+
+            color: #68522d;
+        }
+
+        @keyframes signatureFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .reveal-item {
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 1s ease,
+                transform 1s
+                cubic-bezier(.2,.8,.2,1);
+        }
+
+        .reveal-item.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity 1.2s ease,
+                transform 1.2s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .hero {
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+
+            .anniversary-wrap {
+                width: 205px;
+                height: 205px;
+
+                margin-top: 40px;
+            }
+
+            .anniversary-number {
+                font-size: 105px;
+            }
+
+            .anniversary-text {
+                font-size: 24px;
+            }
+
+            .countdown {
+                gap: 6px;
+            }
+
+            .countdown-box {
+                padding: 12px 4px;
+            }
+
+            .countdown-number {
+                font-size: 20px;
+            }
+
+            .countdown-label {
+                font-size: 8px;
+            }
+
+            .details-card {
+                padding: 45px 20px;
+            }
+
+            .details-card::before,
+            .details-card::after {
+                width: 45px;
+                height: 45px;
+            }
+
+            .gold-ornament {
+                width: 60px;
+                height: 60px;
+            }
+
+            .footer-logo {
+                width: 110px !important;
+                max-width: 110px !important;
+            }
+
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                scroll-behavior:
+                    auto !important;
+
+                transition-duration:
+                    .01ms !important;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         MUSIK LATAR
+    ========================================================= -->
+
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="musik.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+    </audio>
+
+
+    <!-- =========================================================
+         SCROLL PROGRESS
+    ========================================================= -->
+
+    <div id="scroll-progress"></div>
+
+
+    <!-- GOLD LIGHT SWEEP -->
+
+    <div
+        class="gold-light-sweep"
+        id="goldLightSweep">
+    </div>
+
+
+    <!-- =========================================================
+         VIDEO PEMBUKA
+    ========================================================= -->
+
+    <div id="videoOverlay">
+
+        <video
+            id="openingVideo"
+            autoplay
+            muted
+            playsinline
+            preload="auto">
+
+            <source
+                src="video_pembuka.mp4"
+                type="video/mp4">
+
+            Browser Anda tidak mendukung video.
+
+        </video>
+
+
+        <div class="video-dark"></div>
+
+
+        <button
+            class="open-button"
+            id="openInvitation">
+
+            BUKA UNDANGAN →
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section class="hero">
+
+        <div class="gold-particles">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-top-left
+                   parallax-gold">
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-top-right
+                   parallax-gold">
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-bottom-left
+                   parallax-gold">
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-bottom-right
+                   parallax-gold">
+        </div>
+
+
+        <div class="hero-content">
+
+
+            <!-- FOTO KOP -->
+
+            <div
+                class="hero-image-frame fade-in">
+
+                <img
+                    src="61.jpg"
+                    alt="Kop Undangan SMKN 2 Ambon">
+
+            </div>
+
+
+            <div class="hero-label fade-in">
+
+                UNDANGAN 
+
+            </div>
+
+
+            <h1 class="hero-title fade-in">
+
+                PERAYAAN HARI ULANG TAHUN
+
+            </h1>
+
+
+            <p class="hero-subtitle fade-in">
+
+                SMK NEGERI 2 AMBON
+
+            </p>
+
+
+            <!-- ANGKA 61 -->
+
+            <div class="anniversary-wrap">
+
+                <div
+                    class="anniversary-number
+                           parallax-gold">
+
+                    61
+
+                </div>
+
+            </div>
+
+
+            <div class="anniversary-text">
+
+               
+
+
+            </div>
+
+                <div class="countdown-title" style="margin-top: 25px;">
+
+                  Menandai perjalanan 61 tahun dalam membina insan berkulitas,
+                   SMK Negeri 2 Ambon mengundang Bapak/Ibu/Saudara/i untuk menjadi bagian dari momentum bersejarah ini
+
+                </div>
+
+            
+            
+
+            <div class="premium-separator"></div>
+
+
+            <!-- COUNTDOWN -->
+
+            <div
+                class="countdown-wrapper
+                       reveal-item">
+
+                <div class="countdown-title">
+
+                    Menuju Perayaan HUT ke-61
+
+                </div>
+
+
+                <div class="countdown">
+
+
+                    <div class="countdown-box">
+
+                        <span
+                            class="countdown-number"
+                            id="days">
+
+                            00
+
+                        </span>
+
+                        <span class="countdown-label">
+
+                            Hari
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span
+                            class="countdown-number"
+                            id="hours">
+
+                            00
+
+                        </span>
+
+                        <span class="countdown-label">
+
+                            Jam
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span
+                            class="countdown-number"
+                            id="minutes">
+
+                            00
+
+                        </span>
+
+                        <span class="countdown-label">
+
+                            Menit
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="countdown-box">
+
+                        <span
+                            class="countdown-number"
+                            id="seconds">
+
+                            00
+
+                        </span>
+
+                        <span class="countdown-label">
+
+                            Detik
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         DETAILS
+    ========================================================= -->
+
+    <section class="details-section">
+
+
+        <div class="gold-particles">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-top-left">
+        </div>
+
+        <div
+            class="gold-ornament
+                   ornament-top-right">
+        </div>
+
+        <div
+            class="gold-ornament
+                   ornament-bottom-left">
+        </div>
+
+        <div
+            class="gold-ornament
+                   ornament-bottom-right">
+        </div>
+
+
+        <div
+            class="details-card fade-in">
+
+
+            <h2 class="details-title">
+
+                61 TAHUN
+
+            </h2>
+
+
+            <div class="details-subtitle">
+
+                SMK NEGERI 2 AMBON
+
+            </div>
+
+
+            <div class="premium-separator"></div>
+
+
+            <div class="detail-list">
+
+
+                <!-- TANGGAL -->
+
+                <div
+                    class="detail-item
+                           reveal-item">
+
+                    <div class="detail-icon">
+
+                        ✦
+
+                    </div>
+
+
+                    <div class="detail-label">
+
+                        Hari & Tanggal
+
+                    </div>
+
+
+                    <div class="detail-value">
+
+                        Rabu, 30 September 2026
+
+                    </div>
+
+                </div>
+
+
+                <!-- WAKTU -->
+
+                <div
+                    class="detail-item
+                           reveal-item">
+
+                    <div class="detail-icon">
+
+                        ◇
+
+                    </div>
+
+
+                    <div class="detail-label">
+
+                        Waktu
+
+                    </div>
+
+
+                    <div class="detail-value">
+
+                        09.00 WIT – Selesai
+
+                    </div>
+
+                </div>
+
+
+                <!-- TEMPAT -->
+
+                <div
+                    class="detail-item
+                           reveal-item">
+
+                    <div class="detail-icon">
+
+                        ✧
+
+                    </div>
+
+
+                    <div class="detail-label">
+
+                        Tempat
+
+                    </div>
+
+
+                    <div class="detail-value">
+
+                        SMK Negeri 2 Ambon
+                    <p>
+                         <a href="https://maps.app.goo.gl/Ajj2tM6PJ3Mu3WjD9?g_st=ic" target="_blank" class="map-link">
+            📍 KLIK DISINI UNTUK MELIHAT LOKASI DI GOOGLE MAPS
+        </a>
+            </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- TEMA -->
+
+            <div
+                class="theme-box
+                       reveal-item">
+
+                <div class="theme-label">
+
+                    Tema Perayaan
+
+                </div>
+
+
+                <div class="theme-text">
+
+                    “Unggul, Mandiri dan Berkarakter”
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOTO FAMILY
+    ========================================================= -->
+
+    <section class="intro-photo-section">
+
+        <div class="gold-particles">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div
+            class="gold-ornament ornament-top-left">
+        </div>
+
+        <div
+            class="gold-ornament ornament-top-right">
+        </div>
+
+        <div
+            class="gold-ornament ornament-bottom-left">
+        </div>
+
+        <div
+            class="gold-ornament ornament-bottom-right">
+        </div>
+
+
+        <div
+            class="intro-photo-wrapper fade-in">
+
+            <img
+                src="family.jpg"
+                alt="Foto Pembuka SMKN 2 Ambon">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer class="footer">
+
+
+        <!-- LOGO SMKN 2 AMBON -->
+        <div class="footer-logo-wrapper fade-in">
+
+            <img
+                src="logo2.jpg"
+                alt="Logo SMK Negeri 2 Ambon"
+                class="footer-logo">
+
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-top-left">
+        </div>
+
+
+        <div
+            class="gold-ornament
+                   ornament-top-right">
+        </div>
+
+
+        <div class="premium-separator"></div>
+
+
+        <p class="footer-text fade-in">
+
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami
+            apabila Bapak/Ibu/Saudara/i berkenan hadir dan turut
+            memberikan doa serta dukungan dalam perayaan
+            HUT ke-61 SMK Negeri 2 Ambon.
+
+        </p>
+
+
+        <div class="footer-signature">
+
+            Dengan hormat,
+
+        </div>
+
+
+        <div class="footer-name">
+
+            KELUARGA BESAR SMKN 2 AMBON
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+
+        /* =====================================================
+           ELEMENT
+        ===================================================== */
+
+        const videoOverlay =
+            document.getElementById(
+                "videoOverlay"
+            );
+
+        const openingVideo =
+            document.getElementById(
+                "openingVideo"
+            );
+
+        const openInvitation =
+            document.getElementById(
+                "openInvitation"
+            );
+
+        const backgroundMusic =
+            document.getElementById(
+                "backgroundMusic"
+            );
+
+
+        /* =====================================================
+           MUSIK LATAR
+        ===================================================== */
+
+        backgroundMusic.volume = 0.35;
+
+
+        /* =====================================================
+           TUTUP VIDEO + MULAI MUSIK
+        ===================================================== */
+
+        function closeOpening() {
+
+            videoOverlay.classList.add(
+                "hidden"
+            );
+
+            document.body.style.overflow =
+                "auto";
+
+
+            /*
+             * Musik dimulai ketika undangan dibuka.
+             * Ini lebih kompatibel dengan browser HP
+             * dibanding mencoba autoplay dengan suara
+             * sejak halaman pertama kali dibuka.
+             */
+
+            backgroundMusic
+                .play()
+                .catch(() => {
+
+                    console.log(
+                        "Musik menunggu interaksi pengguna."
+                    );
+
+                });
+
+
+            setTimeout(
+                playGoldSweep,
+                600
+            );
+
+        }
+
+
+        /* =====================================================
+           TOMBOL BUKA UNDANGAN
+        ===================================================== */
+
+        openInvitation.addEventListener(
+            "click",
+            closeOpening
+        );
+
+
+        /* =====================================================
+           VIDEO SELESAI
+        ===================================================== */
+
+        openingVideo.addEventListener(
+            "ended",
+            closeOpening
+        );
+
+
+        /* =====================================================
+           GOLD LIGHT SWEEP
+        ===================================================== */
+
+        function playGoldSweep() {
+
+            const sweep =
+                document.getElementById(
+                    "goldLightSweep"
+                );
+
+
+            sweep.classList.remove(
+                "active"
+            );
+
+
+            void sweep.offsetWidth;
+
+
+            sweep.classList.add(
+                "active"
+            );
+
+        }
+
+
+        /* =====================================================
+           COUNTDOWN
+        ===================================================== */
+
+        const eventDate =
+            new Date(
+                "September 30, 2026 09:00:00 GMT+0900"
+            ).getTime();
+
+
+        function updateCountdown() {
+
+            const now =
+                new Date().getTime();
+
+
+            const distance =
+                eventDate - now;
+
+
+            if (distance <= 0) {
+
+                document.getElementById(
+                    "days"
+                ).textContent = "00";
+
+
+                document.getElementById(
+                    "hours"
+                ).textContent = "00";
+
+
+                document.getElementById(
+                    "minutes"
+                ).textContent = "00";
+
+
+                document.getElementById(
+                    "seconds"
+                ).textContent = "00";
+
+
+                const title =
+                    document.querySelector(
+                        ".countdown-title"
+                    );
+
+
+                if (title) {
+
+                    title.textContent =
+                        "✨ Acara Sedang Berlangsung ✨";
+
+                }
+
+
+                return;
+
+            }
+
+
+            const days =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const hours =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60 * 60 * 24)
+                    ) /
+                    (1000 * 60 * 60)
+                );
+
+
+            const minutes =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60 * 60)
+                    ) /
+                    (1000 * 60)
+                );
+
+
+            const seconds =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60)
+                    ) /
+                    1000
+                );
+
+
+            document.getElementById(
+                "days"
+            ).textContent =
+                String(days)
+                    .padStart(2,"0");
+
+
+            document.getElementById(
+                "hours"
+            ).textContent =
+                String(hours)
+                    .padStart(2,"0");
+
+
+            document.getElementById(
+                "minutes"
+            ).textContent =
+                String(minutes)
+                    .padStart(2,"0");
+
+
+            document.getElementById(
+                "seconds"
+            ).textContent =
+                String(seconds)
+                    .padStart(2,"0");
+
+        }
+
+
+        updateCountdown();
+
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                const scrollTop =
+                    window.scrollY;
+
+
+                const documentHeight =
+                    document.documentElement
+                        .scrollHeight -
+                    window.innerHeight;
+
+
+                const progress =
+                    documentHeight > 0
+                        ? (
+                            scrollTop /
+                            documentHeight
+                        ) * 100
+                        : 0;
+
+
+                document.getElementById(
+                    "scroll-progress"
+                ).style.width =
+                    progress + "%";
+
+            },
+
+            {
+                passive: true
+            }
+
+        );
+
+
+        /* =====================================================
+           PARALLAX GOLD
+        ===================================================== */
+
+        const parallaxElements =
+            document.querySelectorAll(
+                ".parallax-gold"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                const scrollY =
+                    window.scrollY;
+
+
+                parallaxElements.forEach(
+                    (element,index) => {
+
+                        const movement =
+                            Math.sin(
+                                (
+                                    scrollY *
+                                    0.002
+                                ) + index
+                            ) * 12;
+
+
+                        element.style.setProperty(
+                            "--parallax-y",
+                            movement + "px"
+                        );
+
+                    }
+                );
+
+            },
+
+            {
+                passive: true
+            }
+
+        );
+
+
+        /* =====================================================
+           FADE IN OBSERVER
+        ===================================================== */
+
+        const fadeElements =
+            document.querySelectorAll(
+                ".fade-in"
+            );
+
+
+        const fadeObserver =
+            new IntersectionObserver(
+                (entries,observer) => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add("show");
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.15
+                }
+
+            );
+
+
+        fadeElements.forEach(
+            element => {
+
+                fadeObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           STAGGERED REVEAL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal-item"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries,observer) => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                const elements =
+                                    entry.target
+                                        .parentElement
+                                        .querySelectorAll(
+                                            ".reveal-item"
+                                        );
+
+
+                                elements.forEach(
+                                    (
+                                        item,
+                                        index
+                                    ) => {
+
+                                        setTimeout(
+                                            () => {
+
+                                                item
+                                                    .classList
+                                                    .add(
+                                                        "visible"
+                                                    );
+
+                                            },
+
+                                            index * 180
+
+                                        );
+
+                                    }
+                                );
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: 0.15
+                }
+
+            );
+
+
+        revealElements.forEach(
+            element => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           GOLD SWEEP OTOMATIS
+        ===================================================== */
+
+        setTimeout(
+            playGoldSweep,
+            1500
+        );
+
+
+        /* =====================================================
+           LOCK SCROLL SAAT VIDEO
+        ===================================================== */
+
+        if (
+            !videoOverlay.classList.contains(
+                "hidden"
+            )
+        ) {
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+    </script>
+
+</body>
+</html>
